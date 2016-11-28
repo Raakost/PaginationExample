@@ -1,0 +1,39 @@
+﻿@model List<CarMVC.Models.Car>
+
+<header>
+    <h6><strong>CARS</strong></h6>
+</header>
+<body>
+    <div class="car-list">
+        <ul>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    if (item == null)
+                    {
+                        <li>Enter a number between 1 and 15!</li>
+                    }
+                    else
+                    {
+                        <li>ID: @item.Id - Make: @item.Make</li>
+                    }
+                }
+            }
+        </ul>
+    </div>
+    <div class="car-by-id">
+        @using (Html.BeginForm("Single", "Home", FormMethod.Get))
+        {
+            <input type="text" name="id" placeholder="Enter id" />
+            <button type="submit" class="btn-car-by-id">Get Car</button>
+        }
+    </div>
+    <div>
+        @using (Html.BeginForm("First", "Home", FormMethod.Get))
+        {
+            <input type="text" name="amount" placeholder="Enter amount" />
+            <button type="submit" class="btn-car-by-amount">Get Car(s)</button>
+        }
+    </div>
+</body>
